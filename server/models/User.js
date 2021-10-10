@@ -24,6 +24,16 @@ const UserSchema = new mongoose.Schema({
             type: String,
             default: ""
         },
+        bio: {
+            type: String,
+            max: 100,
+            default: ""
+        },
+        city: {
+            type: String,
+            max: 40,
+            default: ""
+        },
         hobbies: {
             type: Array,
             default: []
