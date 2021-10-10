@@ -44,5 +44,15 @@ router.delete("/:id", async (req, res) => {
 })
 
 // Get a single user
+router.get("/:id", async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id)
+        // Get all user properties but not password and update/created at
+        const {password, updatedAt, createdAt, ...other} = user._doc
+        res.status(200).json(other)
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
 
 module.exports = router
