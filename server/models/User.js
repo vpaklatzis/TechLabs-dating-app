@@ -41,7 +41,11 @@ const UserSchema = new mongoose.Schema({
         matches: {
             type: Array,
             default: []
-        }
+        },
+        openToDate: {
+            type: Boolean,
+            default: false
+        },
     },
     {
         timestamps: true

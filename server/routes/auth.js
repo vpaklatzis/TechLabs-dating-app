@@ -1,6 +1,15 @@
 const router = require("express").Router()
 const User = require("../models/User")
 const bcrypt = require("bcryptjs")
+const dotenv = require("dotenv")
+
+dotenv.config()
+
+// Twilio config
+const accountSid = process.env.TWILIO_ACCOUNT_SID
+const authToken = process.env.TWILIO_AUTH_TOKEN
+const serviceId = process.env.TWILIO_SERVICE_ID
+const client = require("twilio")(accountSid, authToken)
 
 // Register new user
 router.post("/register", async (req, res) => {
@@ -40,6 +49,43 @@ router.post("/login", async (req, res) => {
     } catch (err) {
         res.status(500).json(err)
     }
+})
+
+
+// Twilio send verification token
+router.get("/login", (req, res) => {
+    client.verify.services(serviceId).verifications
+        .create({
+            to: `+${req.query.phonenumber}`,
+            channel: req.query.channel
+        })
+        .then(
+            verification => {
+                try {
+                    return res.status(200).json(verification.status)
+                } catch (err) {
+                    return res.status(500).json(err)
+                }
+            }
+        )
+})
+
+// Twilio check verification token
+router.get("/verify", (req, res) => {
+    client.verify.services(serviceId).verificationChecks
+        .create({
+            to: `+${req.query.phonenumber}`,
+            code: req.query.code
+        })
+        .then(
+            verification => {
+                try {
+                    return res.status(200).json(verification.status)
+                } catch (err) {
+                    return res.status(500).json(err)
+                }
+            }
+        )
 })
 
 module.exports = router
