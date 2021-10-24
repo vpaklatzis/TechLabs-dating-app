@@ -5,6 +5,8 @@ const helmet = require("helmet")
 const morgan = require("morgan")
 const userRoute = require("./routes/users")
 const authRoute = require("./routes/auth")
+const conversationRoute = require("./routes/conversations")
+const messageRoute = require("./routes/messages")
 const multer = require("multer")
 const path = require("path")
 
@@ -57,6 +59,12 @@ app.use("/api/user", userRoute)
 
 // Auth route
 app.use("/api/auth", authRoute)
+
+// Conversation route
+app.use("/api/conversations", conversationRoute)
+
+// Message route
+app.use("/api/messages", messageRoute)
 
 // Homepage
 app.get("/", (req, res) => {
