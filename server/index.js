@@ -71,6 +71,6 @@ app.get("/", (req, res) => {
     res.send("Homepage")
 })
 
-app.listen(8800, () => 
+app.listen(8080, () => 
     console.log("server is running")
 )
