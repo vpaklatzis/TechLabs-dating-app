@@ -4,6 +4,7 @@ const mongoose = require("mongoose")
 const UserSchema = new mongoose.Schema({
         username: {
             type: String,
+            trim = true,
             required: true,
             min: 3,
             max: 20,
@@ -11,12 +12,14 @@ const UserSchema = new mongoose.Schema({
         },
         email: {
             type: String,
+            trim = true,
             required: true,
             max: 50,
             unique: true
         },
         password: {
             type: String,
+            trim = true,
             required: true,
             min: 6
         },
@@ -31,6 +34,7 @@ const UserSchema = new mongoose.Schema({
         },
         city: {
             type: String,
+            trim = true,
             max: 40,
             default: ""
         },
