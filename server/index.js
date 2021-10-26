@@ -68,7 +68,7 @@ app.use("/api/messages", messageRoute)
 
 // Homepage
 app.get("/", (req, res) => {
-    res.send("Homepage")
+    res.sendFile(__dirname + "/views/index.html")
 })
 
 app.listen(8080, () => 
