@@ -25,6 +25,7 @@ mongoose
 
 // Instead of making a request, it looks for the profile images inside the public/images folder
 app.use("/images", express.static(path.join(__dirname, "public/images")))
+app.use(express.static(__dirname + '/views'));
 
 // Middleware
 app.use(express.json())
