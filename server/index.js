@@ -25,6 +25,7 @@ mongoose
 
 // Instead of making a request, it looks for the profile images inside the public/images folder
 app.use("/images", express.static(path.join(__dirname, "public/images")))
+app.use(express.static(__dirname + '/views'));
 
 // Middleware
 app.use(express.json())
@@ -68,9 +69,9 @@ app.use("/api/messages", messageRoute)
 
 // Homepage
 app.get("/", (req, res) => {
-    res.send("Homepage")
+    res.sendFile(__dirname + "/views/index.html")
 })
 
-app.listen(8800, () => 
+app.listen(8080, () => 
     console.log("server is running")
 )
