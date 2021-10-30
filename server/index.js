@@ -72,6 +72,11 @@ app.get("/", (req, res) => {
     res.sendFile(__dirname + "/views/index.html")
 })
 
+// Select hobbies
+app.get("/hobbies", (req, res) => {
+    res.sendFile(__dirname + "/views/hobbies.html")
+})
+
 app.listen(8080, () => 
     console.log("server is running")
 )
