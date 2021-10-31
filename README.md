@@ -30,4 +30,8 @@ Hence, Weekdays allows users to have balanced interactions with each other thank
 
 https://www.figma.com/file/Ry3m1He6cJzUBtVs27WwYj/Weekdays?node-id=0%3A1
 
+# Demo
+
+https://www.loom.com/share/9c52336d822f4fa2b2cb31109fcbabea
+
 
